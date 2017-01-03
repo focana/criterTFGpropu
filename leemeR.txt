@@ -1,0 +1,25 @@
+Ficheros de datos
+=================
+../data
+20?m.txt	Matriz de datos del Grado 20?. Se han eliminado los registros asociados a Prácticas Tuteladas/Externas y al TFG.
+DptoCodes.txt	Códigos de áreas y Departamentos: Área, Código, Departamento.
+
+
+Ficheros
+========
+
+misInstrucciones.txt	Comandos relevantes de R utilizados.
+
+Rutinas
+
+introCodeDpto	Identifica los Departamentos que imparten cada una de las asignaturas.
+
+CritVig			Estima la carga docente de cada asignatura utilizando el criterio vigente.
+CritGT			Criterio considerando grupos de Teoría (propuesto por el Dpto. de Nutrición y Bromatología).
+
+appDpto			Obtiene la distribución por Departamentos a la matriz con el criterio calculado por materia.
+
+fguardaFichcsv	Crea un fichero CSV con los recuentos por Departamento. 
+
+fGrafDpto		Crea un diagrama de barras con la distribución de cargas estimadas por Departamento.
+

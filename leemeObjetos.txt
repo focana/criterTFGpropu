@@ -1,0 +1,74 @@
+
+Descripción de objetos
+
+* Datos 
+d+<Grado> : 'data.frame':   datos de la impartición de asignaturas en un Grado
+ $ Codigo      Código de asignatura.
+ $ Asignatura  Nombre de asignatura.
+ $ Curso       Curso del Grado en el que se imparte la asignatura
+ $ Alumnos     Número de estudiantes. 
+ $ Caracter    Tipo de asignatura: Troncal, Obligatoria, Optativa. 
+ $ Ads         Tipo de adscripción: U (única), C (compartida)
+ $ Cr_amp      Créditos de teoría impartidos (grupo amplio) por el Departamento.
+ $ Gr_amp      Número de grupos de teoría (grupos amplios) por el Departamento
+ $ Cr_sub      Créditos de prácticas impartidos (subgrupos) por el Departamento
+ $ Subgr       Número de subgrupos impartidos por el Departamento.
+ $ Tot_amp     Total de créditos de teoría (grupo amplio) impartidos por el Departamento.
+ $ Tot_sub     Total de créditos de prácticas (subgrupo) impartidos por el Departamento.
+ $ Cr_as       Créditos de la asignatura en el plan de estudios
+ $ Area        Área (Departamento) responsable de la docencia.
+ $ Cd          Código identificativo del Departamento. Es introducido por la function introCodeDpto.R
+ 
+Ejemplos: dFAR, dNHD, dCTA 
+
+* Función
+introCodeDpto <- function (mdato, Codes) 
+ Identifica los Departamentos que imparten cada una de las asignaturas.
+
+* Datos  
+ DptoCode : 'data.frame':  códigos de Departamentos.
+ $ Area        Área (Departamento)
+ $ COD         Código identificativo del Departamento
+ $ DEPARTAMENTO Denominación del Departamento.
+ 
+Ejemplo: DptoCode  
+
+* Funciones
+ CritVig(dGrado) 
+  Calcula la carga estimada de cada asignatura utilizando el Criterio Vigente, basado en el plan de estudios con 
+  un peso reducido para las asignaturas optativas.
+  
+ CritGT(dGrado) 
+  Calcula la carga estimada de cada asignatura utilizando el criterio basado en los Grupos de Teoría propuesto por
+  el Departamento de Nutrición y Bromatología.
+  
+
+* Datos 
+CritVig+<Grado> : 'data.frame': estimación de la contribución de cada asignatura en aplicación de un criterio.
+ $ Asignatura: Denominación de la asignatura.
+ $ Cd        : Nombre del departamento responsable de la docencia.
+ $ Carga     : Carga estimada en virtud del criterio.
+ $ PCarga    : Porcentaje de carga estimada en virtud del criterio.
+
+ Ejemplos:
+  * Criterio vigente: CritVigCTA, CritVigFAR, CritVigNHD
+  * Criterio Gt (grupos de teoría): CritGtCTA, CritGtFAR, CritGtNHD  
+ 
+* Función
+appDpto <- function (mCrit, Codes) 
+ Obtiene la distribución por Departamentos a la matriz con el criterio calculado por materia.
+ 
+* Datos 
+ <Grado>+dptoCrit* : 'data.frame': distribución de la estimación de la participación docente-Criterio por Departamento
+ $ Cd      :  Código del Departamento
+ $ nombdpto:  Nombre del Departamento.
+ $ Carga   :  Estimación de la participación docente por Departamento.
+ $ PCarga  :  Porcentaje de la estimación de la participación docente por Departamento.
+ 
+ Ejemplos:
+  * Criterio vigente: CTAdptoCritvig, FARdptoCritvig, NHDdptoCritvig
+  * Criterio Gt (grupos de teoría): CTAdptoCritgt, FARdptoCritgt, NHDdptoCritgt  
+
+* Función
+ fguardaFichcsv <- function (dCrit, nfdCrit) 
+ Crea un fichero CSV con los recuentos por Departamento. 
